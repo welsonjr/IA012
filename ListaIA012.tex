@@ -5,11 +5,11 @@
 \usepackage{amssymb}
 \usepackage{pdflscape}
 \author{Welson Jr}
-\title{Lista de Exercicios I IA012:2013}
+\title{Lista de Exercícios I IA012:2013}
 \begin{document}
 \maketitle
-\section*{Exercicio 1}
-Um sistema baseado no código de Vigenère com os 26 caracteres do alfabeto inglês mais o espaço em branco (27o caracter) foi usado para codificar uma frase em português resultando no seguinte texto cifrado:
+\section*{Exercício 1}
+Um sistema baseado no código de Vigenère com os 26 caracteres do alfabeto inglês mais o espaço em branco (27o caractere) foi usado para codificar uma frase em português resultando no seguinte texto cifrado:
 \begin{center}
 \fbox{ ANKYODKYUREPFJBYOJDSPLREYIUNOFDOIUERFPLUYTS}
 \end{center}
@@ -22,100 +22,102 @@ Sabendo-se que foi utilizada uma chave tão longa quanto o texto original (one-t
 \subsection*{R:}
 Usando a Tabela~\ref{tab:table_vigenere} na Pagina:~\pageref{tab:table_vigenere} para reverter a cifragem foram descobertas as seguintes chaves:
 \paragraph*{Caso 1}
+\subparagraph*{Chave : }
 \paragraph*{Caso 2}
-
-\section*{Exercicio 2}
-2. Qual é o número de chaves possíveis no codificador Playfair? Expresse sua resposta em potência de 2. Usando um sistema capaz de fazer 105 codificações por segundo, quais seriam o tempo mínimo, médio e máximo para se decifrar uma mensagem por força bruta?
-\section*{Exercicio 3}
-3. Quais são as informações que constituem a chave em uma máquina de criptografia baseada em rotores? Justifique.
-\section*{Exercicio 4}
-4. Considere um sinal de voz que foi amostrado a uma taxa de 8 KHz,e que cada amostra foi quantizada com 16 bits. Sabe-se que é possível alterar os dois bits menos significativos de cada amostra sem afetar significativamente a qualidade do sinal. Determine o menor intervalo (em segundos) do sinal de voz que deve ser transmitido para que uma imagem de 640 x 480 pixels em cores (RGB, 8 bits para cada cor por pixel) possa ser transportada deforma secreta dentro do mesmo.
-\section*{Exercicio 5}
-5. Qual é o texto crifrado correspondente ao texto
-TRANSPOSICAOMULTIPLADECOLUNA
-quando é aplicada transposição dupla de colunas com chaves k1=7 e k2= 3421 ?
-\section*{Exercicio 6}
-6. Pesquise e descreva com suas palavras o funcionamento interno do padrão de criptografia simétrica AES.
-\section*{Exercicio 7}
-7. Demonstre como o uso do mesmo algoritmo e da mesma chave possibilita tanto a codificação como a decodificação em DES. (Dica: procure trabalhar no nível de blocos de bits e não de bits individuais.)
-\section*{Exercicio 8}
-8. Analise em detalhes o efeito de erros na transmissão de um bloco de código cifrado por AES no modo CBC.
-\section*{Exercicio 9}
-9. (a) O padrão AES no modo CBC com IV=0 pode ser visto como um caso particular de AES no modo CFB. Mostre como isso pode ser feito na etapa de codificação do CFB, considerando que é possível ter acesso a qualquer linha de transferência de dados entre os blocos componentes (registrador de deslocamento, bloco DES, registrador de truncamento, portas XOR).
-(b) Repita o problema anterior considerando que só se tem acessoàs linhas de transferência marcadas com Pi e Ci de CFB (inclusive o reg. de deslocamento) e que é permitido acrescentar bloco(s) simples ao sistema (não pode ser bloco AES).
-\section*{Exercicio 10}
-10. Explique o funcionamento do algoritmo estendido de Euclides e use-o para determinar o mdc(24140, 16762).
-\section*{Exercicio 11}
-11. O DES simples pode ter sua segurança reforçada como uso de técnicas como modo CBC ou DES Triplo. Mas não existe um padrão sobre como adotar as duas técnicas simultaneamente e há duas formas de combiná-las. Mostre em diagrama de blocos como seriam estas formas e discuta suas diferenças sob o ponto devista de (a) segurança, (b) desempenho em software e (c) desempenho em hardware.
-\section*{Exercicio 12}
-12. (a) Em DES simples mostre que, se C=Ek(P), então C'=Ek'(P'), onde X' indica o complemento dos bits de X. Dica: mostre primeiro que, para sequências de bits A e B de mesmo comprimento, (A XOR B)' = A' XOR B.
-(b) Mostre como esta propriedade pode ser usada para diminuir o esforço necessário para se quebrar um código DES simples por força bruta, onde pelo menos três pares (P1,C1), (P2,C2) e (P3,C3) são conhecidos, sendo que P2 = P1'.
-\section*{Exercicio 13}
-13. Em um ataque tipo ``Meet-in-the-middle no esquema de codificacão DES-Duplo, determine a probabilidade de que o par de chaves (k1,k2) é o par de chaves correto nos seguintes casos: (a) teste bem sucedido com um par (P,C) e (b) teste bem sucedido com dois pares (P,C), onde C e P são blocos de 64 bits cifrados e decifrados, respectivamente.
-\section*{Exercicio 14}
-14. (a) Mostre como a criptografia simétrica pode ser usada na geração de números aleatórios.
-(b) Apresente e discuta o gerador de números pseudo-aleatórios definido na norma ANSI X9.17.
-\section*{Exercicio 15}
-15. Existem mecanismos de envio de informações através de canais ocultos, como por exemplo, um mecanismo que se baseia no comprimentode mensagens ``inocentes enviadas. Proponha 3 novas maneiras de se criar canais ocultos de envio de informação para fora de um sistemade computação além deste descrito.
-\section*{Exercicio 16}
-16. Descreva em detalhes o algoritmo RSA incluindo a geração das chaves, a codificação e a decodificação de uma mensagem.
-\section*{Exercicio 17}
-17. Faça a codificação e a decodificação dos valores P abaixo usando o algoritmo RSA. Dica: elevar um númeroa uma potência pode ser simples se a potência for desmembrada em outras menores. Ex: 2537 = 2532 x 254 x 251 .
-(a) p = 3; q = 11; d = 7; P = 5
-(b) p = 5; q = 11; e = 3; P = 9
-(c) p = 7; q = 11; e = 17; P = 8
-(d) p = 11; q = 13; e = 11; P = 7
-(e) p = 17; q = 31; e = 7; P = 2
-\section*{Exercicio 18}
-18. Mostre os passos que um invasor deve seguir para poder decifrar um dado cifrado por RSA sabendo que ele possui somente o dado cifrado (C) e a chave pública (e,n). Há pelo menos 3 abordagens para se atacar o RSA e o aluno deve mostrar os passos de pelo menos 2 delas.
-\section*{Exercicio 19}
-19. Explique em detalhes como podemos encontrar números primos grandes sem usar força bruta, isto é, sem fazer teste exaustivo com todos os possíveis divisores dos mesmos?
-\section*{Exercicio 20}
-20. Mostre pelo menos 2 problemas técnicos práticos enfrentados por programadores que implementam uma versão útil (com chaves grandes) do algoritmo RSA. Discuta possíveis soluções para os mesmos.
-\section*{Exercicio 21}
-21. Mostre os principais passos de como o código de Vigenère (com chave repetida) pode ser criptoanalisado, ilustrando seus argumentos com um exemplo em língua portuguesa proposto por você. Não é necessário fazer uma análise completa e chegar ao texto original. Basta demonstrar com seu exemplo como os pontos fracos do código podem ser explorados.
-\section*{Exercicio 22}
-22. (a) Em um sistema AES em modo CBC, discuta os efeitos causados no transmissor e no receptor pela codificação de um bloco de texto P adulterado.
-(b) Até onde vai a influência de um erro na transmissão de um bit em um caracter codificado por AES no modo CFB de 8 bits? Considere o pior caso.
-\section*{Exercicio 23}
-23. Antes da era dos computadores, ,um dos mais eficientes esquemas de criptografia era o da máquina de N rotores. Supondo que N=4 e que a máquina fosse dedicada à cifragem apenas dos algarismos de 0 a 9, determine (mostrando como se calcula) o número máximo possível de alfabetos de substituição distintos gerados pela mesma nos seguintes casos (obs.: considere que não há repetição de rotores idênticos):
-(a) tem-se um conjunto único de N rotores acoplados em uma ordem pré-determinada;
-(b) tem-se um conjunto único de N rotores cuja ordem de acoplamento pode ser mudada;
-(c) tem-se o conjunto de todos os rotores possíveis para serem usados em todas as ordens de acoplamento possíveis.
-\section*{Exercicio 24}
-24. Discuta o(s) problema(s) que pode(m) ser causado(s) pelo uso de algoritmos de criptografia simétrica quando usados no modo ECB. Apresente uma situação concreta em que tal (tais) problema(s) poderia(m) ser constatado(s).
-\section*{Exercicio 25}
-25. Um texto P foi cifrado com RSA por um usuário, que tem como chave pública Kpu o par (e=5, N=35), gerando o código C=10. Um invasor interceptou o código C e, usando a chave pública, conseguiu descobrir P. Qual é o valor de P? Justifique sua resposta.
-\section*{Exercicio 26}
-26. O padrão DES de criptografia simétrica possui algumas vulnerabilidades e, por isso, na prática costuma-se se usar o método chamado DES Triplo, no qual o padrão é usado três vezes com duas chaves distintas. Explique com detalhes os argumentos para se usar:
-o DES três vezes, e não duas como era de se esperar, já que o número de chaves é dois;
-apenas duas chaves (e não três), já que o padrão é usado três vezes.
-\section*{Exercicio 27}
-27. Em um sistema de criptografia de chave assimétrica como o RSA ocorre uma expansão no tamanho do arquivo quando ele é cifrado. Explique:
-qual é a causa da expansão?
-Como ela pode ser minimizada?
-Como o algoritmo de cifrar e decifrar é praticamente o mesmo (só muda a chave), o que deve ser feito para que o arquivo não cresça quando for decifrado?
-\section*{Exercicio 28}
+\subparagraph*{Chave : }
+\paragraph*{ O método one-time pad é sem duvidas um, se não for o mais seguro dado que a chave é totalmente aleatória e não possuí relação com o texto, entretanto o esforço para gerar uma chave tão longa quanto o texto, entregar de forma segura ao destinatário e descartá-la apos o primeiro uso é tão grande quanto seria o esforço de entregar a mensagem diretamente pelo mesmo canal ao destinatário.  }
+\section*{Exercício 2}
+2. Qual é o número de chaves possíveis no codificador Playfair? Expresse sua resposta em potência de 2. Usando um sistema capaz de fazer 105 codificações por segundo, quais seriam o tempo mínimo, médio e máximo para se decifrar uma mensagem por força bruta?\\
+\section*{Exercício 3}
+3. Quais são as informações que constituem a chave em uma máquina de criptografia baseada em rotores? Justifique.\\
+\section*{Exercício 4}
+4. Considere um sinal de voz que foi amostrado a uma taxa de 8 KHz,e que cada amostra foi quantizada com 16 bits. Sabe-se que é possível alterar os dois bits menos significativos de cada amostra sem afetar significativamente a qualidade do sinal. Determine o menor intervalo (em segundos) do sinal de voz que deve ser transmitido para que uma imagem de 640 x 480 pixels em cores (RGB, 8 bits para cada cor por pixel) possa ser transportada deforma secreta dentro do mesmo.\\
+\section*{Exercício 5}
+5. Qual é o texto cifrado correspondente ao texto\\
+TRANSPOSICAOMULTIPLADECOLUNA\\
+quando é aplicada transposição dupla de colunas com chaves k1=7 e k2= 3421 ?\\
+\section*{Exercício 6}
+6. Pesquise e descreva com suas palavras o funcionamento interno do padrão de criptografia simétrica AES.\\
+\section*{Exercício 7}
+7. Demonstre como o uso do mesmo algoritmo e da mesma chave possibilita tanto a codificação como a decodificação em DES. (Dica: procure trabalhar no nível de blocos de bits e não de bits individuais.)\\
+\section*{Exercício 8}
+8. Analise em detalhes o efeito de erros na transmissão de um bloco de código cifrado por AES no modo CBC.\\
+\section*{Exercício 9}
+9. (a) O padrão AES no modo CBC com IV=0 pode ser visto como um caso particular de AES no modo CFB. Mostre como isso pode ser feito na etapa de codificação do CFB, considerando que é possível ter acesso a qualquer linha de transferência de dados entre os blocos componentes (registrador de deslocamento, bloco DES, registrador de truncamento, portas XOR).\\
+(b) Repita o problema anterior considerando que só se tem acesso às linhas de transferência marcadas com Pi e Ci de CFB (inclusive o reg. de deslocamento) e que é permitido acrescentar bloco(s) simples ao sistema (não pode ser bloco AES).\\
+\section*{Exercício 10}
+10. Explique o funcionamento do algoritmo estendido de Euclides e use-o para determinar o mdc(24140, 16762).\\
+\section*{Exercício 11}
+11. O DES simples pode ter sua segurança reforçada como uso de técnicas como modo CBC ou DES Triplo. Mas não existe um padrão sobre como adotar as duas técnicas simultaneamente e há duas formas de combiná-las. Mostre em diagrama de blocos como seriam estas formas e discuta suas diferenças sob o ponto de vista de (a) segurança, (b) desempenho em software e (c) desempenho em hardware.\\
+\section*{Exercício 12}
+12. (a) Em DES simples mostre que, se C=Ek(P), então C'=Ek'(P'), onde X' indica o complemento dos bits de X. Dica: mostre primeiro que, para sequências de bits A e B de mesmo comprimento, (A XOR B)' = A' XOR B.\\
+(b) Mostre como esta propriedade pode ser usada para diminuir o esforço necessário para se quebrar um código DES simples por força bruta, onde pelo menos três pares (P1,C1), (P2,C2) e (P3,C3) são conhecidos, sendo que P2 = P1'.\\
+\section*{Exercício 13}
+13. Em um ataque tipo ``Meet-in-the-middle no esquema de codificação DES-Duplo, determine a probabilidade de que o par de chaves (k1,k2) é o par de chaves correto nos seguintes casos: (a) teste bem sucedido com um par (P,C) e (b) teste bem sucedido com dois pares (P,C), onde C e P são blocos de 64 bits cifrados e decifrados, respectivamente.\\
+\section*{Exercício 14}
+14. (a) Mostre como a criptografia simétrica pode ser usada na geração de números aleatórios.\\
+(b) Apresente e discuta o gerador de números pseudo-aleatórios definido na norma ANSI X9.17.\\
+\section*{Exercício 15}
+15. Existem mecanismos de envio de informações através de canais ocultos, como por exemplo, um mecanismo que se baseia no comprimento de mensagens ``inocentes enviadas. Proponha 3 novas maneiras de se criar canais ocultos de envio de informação para fora de um sistema de computação além deste descrito.\\
+\section*{Exercício 16}
+16. Descreva em detalhes o algoritmo RSA incluindo a geração das chaves, a codificação e a decodificação de uma mensagem.\\
+\section*{Exercício 17}
+17. Faça a codificação e a decodificação dos valores P abaixo usando o algoritmo RSA. Dica: elevar um número a uma potência pode ser simples se a potência for desmembrada em outras menores. Ex: 2537 = 2532 x 254 x 251 .\\
+(a) p = 3; q = 11; d = 7; P = 5\\
+(b) p = 5; q = 11; e = 3; P = 9\\
+(c) p = 7; q = 11; e = 17; P = 8\\
+(d) p = 11; q = 13; e = 11; P = 7\\
+(e) p = 17; q = 31; e = 7; P = 2\\
+\section*{Exercício 18}
+18. Mostre os passos que um invasor deve seguir para poder decifrar um dado cifrado por RSA sabendo que ele possui somente o dado cifrado (C) e a chave pública (e,n). Há pelo menos 3 abordagens para se atacar o RSA e o aluno deve mostrar os passos de pelo menos 2 delas.\\
+\section*{Exercício 19}
+19. Explique em detalhes como podemos encontrar números primos grandes sem usar força bruta, isto é, sem fazer teste exaustivo com todos os possíveis divisores dos mesmos?\\
+\section*{Exercício 20}
+20. Mostre pelo menos 2 problemas técnicos práticos enfrentados por programadores que implementam uma versão útil (com chaves grandes) do algoritmo RSA. Discuta possíveis soluções para os mesmos.\\
+\section*{Exercício 21}
+21. Mostre os principais passos de como o código de Vigenère (com chave repetida) pode ser criptoanalisado, ilustrando seus argumentos com um exemplo em língua portuguesa proposto por você. Não é necessário fazer uma análise completa e chegar ao texto original. Basta demonstrar com seu exemplo como os pontos fracos do código podem ser explorados.\\
+\section*{Exercício 22}
+22. (a) Em um sistema AES em modo CBC, discuta os efeitos causados no transmissor e no receptor pela codificação de um bloco de texto P adulterado.\\
+(b) Até onde vai a influência de um erro na transmissão de um bit em um caractere codificado por AES no modo CFB de 8 bits? Considere o pior caso.\\
+\section*{Exercício 23}
+23. Antes da era dos computadores, ,um dos mais eficientes esquemas de criptografia era o da máquina de N rotores. Supondo que N=4 e que a máquina fosse dedicada à cifragem apenas dos algarismos de 0 a 9, determine (mostrando como se calcula) o número máximo possível de alfabetos de substituição distintos gerados pela mesma nos seguintes casos (obs.: considere que não há repetição de rotores idênticos):\\
+(a) tem-se um conjunto único de N rotores acoplados em uma ordem pré-determinada;\\
+(b) tem-se um conjunto único de N rotores cuja ordem de acoplamento pode ser mudada;\\
+(c) tem-se o conjunto de todos os rotores possíveis para serem usados em todas as ordens de acoplamento possíveis.\\
+\section*{Exercício 24}
+24. Discuta o(s) problema(s) que pode(m) ser causado(s) pelo uso de algoritmos de criptografia simétrica quando usados no modo ECB. Apresente uma situação concreta em que tal (tais) problema(s) poderia(m) ser constatado(s).\\
+\section*{Exercício 25}
+25. Um texto P foi cifrado com RSA por um usuário, que tem como chave pública Kpu o par (e=5, N=35), gerando o código C=10. Um invasor interceptou o código C e, usando a chave pública, conseguiu descobrir P. Qual é o valor de P? Justifique sua resposta.\\
+\section*{Exercício 26}
+26. O padrão DES de criptografia simétrica possui algumas vulnerabilidades e, por isso, na prática\\ costuma-se se usar o método chamado DES Triplo, no qual o padrão é usado três vezes com duas chaves\\ distintas. Explique com detalhes os argumentos para se usar:\\
+o DES três vezes, e não duas como era de se esperar, já que o número de chaves é dois;\\
+apenas duas chaves (e não três), já que o padrão é usado três vezes.\\
+\section*{Exercício 27}
+27. Em um sistema de criptografia de chave assimétrica como o RSA ocorre uma expansão no tamanho do arquivo quando ele é cifrado. Explique:\\
+qual é a causa da expansão?\\
+Como ela pode ser minimizada?\\
+Como o algoritmo de cifrar e decifrar é praticamente o mesmo (só muda a chave), o que deve ser feito para que o arquivo não cresça quando for decifrado?\\
+\section*{Exercício 28}
 28. (a) Discuta 2 vantagens da criptografia assimétrica sobre a simétrica.
-(b) Se a criptografia assimétrica é vantajosa em relação à simétrica, por que esta última continua sendo usada?
-\section*{Exercicio 29}
-29. Explique qual é a idéia básica do esquema de cifragem conhecido por one-time pad e porque ele é considerado inquebrável.
-\section*{Exercicio 30}
-30. Explique o que é efeito avalanche e sua importância em esquemas de cifragem.
-\section*{Exercicio 31}
-31. Explique em detalhes o algoritmo de expansão de chaves do AES.
-\section*{Exercicio 32}
-32. Quais foram os requisitos que precisaram ser atendidos no projeto das S-boxes em AES?
-\section*{Exercicio 33}
-33. Mostre como foram projetadas as S-boxes de AES.
-\section*{Exercicio 34}
-34. Por que podemos afirmar que a cifragem em AES pode ser feita com mais rapidez que a decifragem se as etapas de processamento são as mesmas em ambos os casos?
-\section*{Exercicio 35}
-35. Quais foram os motivos para se adotar valores de 1 a 3 na matriz responsável pela etapa "mix columns" do AES?
-\section*{Exercicio 36}
-36. Qual é a matriz que implementa a operação inversa de "mix column" em AES?
-\section*{Exercicio 37}
-37. Qual é o motivo para se usar "add round key" no início e no final do algoritmo AES?
+(b) Se a criptografia assimétrica é vantajosa em relação à simétrica, por que esta última continua sendo usada?\\
+\section*{Exercício 29}
+29. Explique qual é a idéia básica do esquema de cifragem conhecido por one-time pad e porque ele é considerado inquebrável.\\
+\section*{Exercício 30}
+30. Explique o que é efeito avalanche e sua importância em esquemas de cifragem.\\
+\section*{Exercício 31}
+31. Explique em detalhes o algoritmo de expansão de chaves do AES.\\
+\section*{Exercício 32}
+32. Quais foram os requisitos que precisaram ser atendidos no projeto das S-boxes em AES?\\
+\section*{Exercício 33}
+33. Mostre como foram projetadas as S-boxes de AES.\\
+\section*{Exercício 34}
+34. Por que podemos afirmar que a cifragem em AES pode ser feita com mais rapidez que a decifragem se as etapas de processamento são as mesmas em ambos os casos?\\
+\section*{Exercício 35}
+35. Quais foram os motivos para se adotar valores de 1 a 3 na matriz responsável pela etapa "mix columns" do AES?\\
+\section*{Exercício 36}
+36. Qual é a matriz que implementa a operação inversa de "mix column" em AES?\\
+\section*{Exercício 37}
+37. Qual é o motivo para se usar "add round key" no início e no final do algoritmo AES?\\
 \newpage
 \begin{landscape}
 \begin{table}[!htb]
