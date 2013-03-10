@@ -9,7 +9,7 @@
 \begin{document}
 \maketitle
 \section*{Exercício 1}
-Um sistema baseado no código de Vigenère com os 26 caracteres do alfabeto inglês mais o espaço em branco (27o caractere) foi usado para codificar uma frase em português resultando no seguinte texto cifrado:
+Um sistema baseado no código de Vigenère com os 26 caracteres do alfabeto inglês mais o espaço em branco (27º caractere) foi usado para codificar uma frase em português resultando no seguinte texto cifrado:
 \begin{center}
 \fbox{ ANKYODKYUREPFJBYOJDSPLREYIUNOFDOIUERFPLUYTS}
 \end{center}
@@ -25,23 +25,26 @@ Usando a Tabela~\ref{tab:table_vigenere} na Pagina:~\pageref{tab:table_vigenere}
 \subparagraph*{Chave : }
 \paragraph*{Caso 2}
 \subparagraph*{Chave : }
-\paragraph*{ O método one-time pad é sem duvidas um, se não for o mais seguro dado que a chave é totalmente aleatória e não possuí relação com o texto, entretanto o esforço para gerar uma chave tão longa quanto o texto, entregar de forma segura ao destinatário e descartá-la apos o primeiro uso é tão grande quanto seria o esforço de entregar a mensagem diretamente pelo mesmo canal ao destinatário.  }
+\paragraph*{ O método one-time pad é sem duvidas o mais seguro, utilizando uma chave tão longa quanto o a mensagem e sem relação alguma com o mesmo, produz um texto cifrado impossível de ser decifrado, entretanto cada chave só pode ser utilizada apenas uma vez sendo descartada apos o uso, isso torna o esforço de se entregar a chave de forma segura ao destinatário tão custoso quanto entregar a mensagem em texto plano.  }
 \section*{Exercício 2}
-2. Qual é o número de chaves possíveis no codificador Playfair? Expresse sua resposta em potência de 2. Usando um sistema capaz de fazer 105 codificações por segundo, quais seriam o tempo mínimo, médio e máximo para se decifrar uma mensagem por força bruta?\\
+Qual é o número de chaves possíveis no codificador Playfair? Expresse sua resposta em potência de 2. Usando um sistema capaz de fazer 105 codificações por segundo, quais seriam o tempo mínimo, médio e máximo para se decifrar uma mensagem por força bruta?
+\subsection*{R:}
+\paragraph*{ Considerando que a chave do codificador  Playfair é uma matriz 5x5 resulta em um total de 25! permutações possíveis, portanto }
 \section*{Exercício 3}
-3. Quais são as informações que constituem a chave em uma máquina de criptografia baseada em rotores? Justifique.\\
+Quais são as informações que constituem a chave em uma máquina de criptografia baseada em rotores? Justifique.
+\paragraph*{R:}
+\subparagraph*{ Pode ser considerada como chave os próprios rotores, e suas posições iniciais. Cada rotor na verdade pode ser considerado como uma tabela de mapeamento entre a entrada e saída, a combinação de rotores aumenta o numero possível de tabelas. Uma vez que os rotores se movimentam conforme novos símbolos são inseridos, isso faz com que a cada simbolo uma nova tabela seja utilizada para a cifragem, para descriptografar é necessário utilizar-se a mesma tabela de cifragem, ou seja os rotores originais e suas posições iniciais.}
 \section*{Exercício 4}
-4. Considere um sinal de voz que foi amostrado a uma taxa de 8 KHz,e que cada amostra foi quantizada com 16 bits. Sabe-se que é possível alterar os dois bits menos significativos de cada amostra sem afetar significativamente a qualidade do sinal. Determine o menor intervalo (em segundos) do sinal de voz que deve ser transmitido para que uma imagem de 640 x 480 pixels em cores (RGB, 8 bits para cada cor por pixel) possa ser transportada deforma secreta dentro do mesmo.\\
+Considere um sinal de voz que foi amostrado a uma taxa de 8 KHz,e que cada amostra foi quantizada com 16 bits. Sabe-se que é possível alterar os dois bits menos significativos de cada amostra sem afetar significativamente a qualidade do sinal. Determine o menor intervalo (em segundos) do sinal de voz que deve ser transmitido para que uma imagem de 640 x 480 pixels em cores (RGB, 8 bits para cada cor por pixel) possa ser transportada deforma secreta dentro do mesmo.
+\paragraph*{R:}
 \section*{Exercício 5}
-5. Qual é o texto cifrado correspondente ao texto\\
-TRANSPOSICAOMULTIPLADECOLUNA\\
-quando é aplicada transposição dupla de colunas com chaves k1=7 e k2= 3421 ?\\
+5. Qual é o texto cifrado correspondente ao texto TRANSPOSICAOMULTIPLADECOLUNA quando é aplicada transposição dupla de colunas com chaves \begin{math}k_1=7\end{math} e \begin{math}k_2= 3421\end{math}?
 \section*{Exercício 6}
-6. Pesquise e descreva com suas palavras o funcionamento interno do padrão de criptografia simétrica AES.\\
+6. Pesquise e descreva com suas palavras o funcionamento interno do padrão de criptografia simétrica AES.
 \section*{Exercício 7}
 7. Demonstre como o uso do mesmo algoritmo e da mesma chave possibilita tanto a codificação como a decodificação em DES. (Dica: procure trabalhar no nível de blocos de bits e não de bits individuais.)\\
 \section*{Exercício 8}
-8. Analise em detalhes o efeito de erros na transmissão de um bloco de código cifrado por AES no modo CBC.\\
+8. Analise em detalhes o efeito de erros na transmissão de um bloco de código cifrado por AES no modo CBC.
 \section*{Exercício 9}
 9. (a) O padrão AES no modo CBC com IV=0 pode ser visto como um caso particular de AES no modo CFB. Mostre como isso pode ser feito na etapa de codificação do CFB, considerando que é possível ter acesso a qualquer linha de transferência de dados entre os blocos componentes (registrador de deslocamento, bloco DES, registrador de truncamento, portas XOR).\\
 (b) Repita o problema anterior considerando que só se tem acesso às linhas de transferência marcadas com Pi e Ci de CFB (inclusive o reg. de deslocamento) e que é permitido acrescentar bloco(s) simples ao sistema (não pode ser bloco AES).\\
