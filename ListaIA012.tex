@@ -63,8 +63,10 @@ Explique o funcionamento do algoritmo estendido de Euclides e use-o para determi
 \section*{Exercício 11}
 O DES simples pode ter sua segurança reforçada como uso de técnicas como modo CBC ou DES Triplo. Mas não existe um padrão sobre como adotar as duas técnicas simultaneamente e há duas formas de combiná-las. Mostre em diagrama de blocos como seriam estas formas e discuta suas diferenças sob o ponto de vista de (a) segurança, (b) desempenho em software e (c) desempenho em hardware.\\
 \section*{Exercício 12}
-(a) Em DES simples mostre que, se $C=Ek(P)$, então $C'=Ek'(P')$, onde $X'$ indica o complemento dos bits de $X$. Dica: mostre primeiro que, para sequências de bits A e B de mesmo comprimento, $(A \oplus B)' = A' \oplus B$.\\
-(b) Mostre como esta propriedade pode ser usada para diminuir o esforço necessário para se quebrar um código DES simples por força bruta, onde pelo menos três pares (P1,C1), (P2,C2) e (P3,C3) são conhecidos, sendo que P2 = P1'.\\
+\begin{enumerate}[(a)]
+\item Em DES simples mostre que, se $C=Ek(P)$, então $C'=Ek'(P')$, onde $X'$ indica o complemento dos bits de $X$. Dica: mostre primeiro que, para sequências de bits A e B de mesmo comprimento, $(A \oplus B)' = A' \oplus B$.
+\item Mostre como esta propriedade pode ser usada para diminuir o esforço necessário para se quebrar um código DES simples por força bruta, onde pelo menos três pares (P1,C1), (P2,C2) e (P3,C3) são conhecidos, sendo que P2 = P1'.
+\end{enumerate}
 \section*{Exercício 13}
 Em um ataque tipo ``Meet-in-the-middle no esquema de codificação DES-Duplo, determine a probabilidade de que o par de chaves (k1,k2) é o par de chaves correto nos seguintes casos: (a) teste bem sucedido com um par (P,C) e (b) teste bem sucedido com dois pares (P,C), onde C e P são blocos de 64 bits cifrados e decifrados, respectivamente.\\
 \section*{Exercício 14}
