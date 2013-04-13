@@ -9,13 +9,13 @@
 \usepackage{graphicx}
 \usepackage{enumerate}
 \author{Welson Jr}
-\title{Lista de exercicios II}
+\title{Lista de Exercícios II}
 \begin{document}
 \section*{Exercício 1} 
 \paragraph{ Considere os seguintes esquemas de distribuição de chaves:}
 \subparagraph{ Esquema I:}
 \begin{enumerate}[(1)]
-\item $A -> B: ID_A, EK_A(NA)$
+\item $A -> B: ID_A, EK_A(N_A)$
 \item $B -> KDC: ID_A, EK_A(N_A), ID_B, EK_B(N_B)$
 \item $KDC -> B: EK_B(K_S, ID_A, N_B), EK_A(K_S, ID_B, N_A)$
 \item $B -> A: EK_A(K_S, ID_B, N_A)$
@@ -30,11 +30,19 @@
 \end{enumerate}
 \subparagraph{
 Descreva a utilidade/necessidade de cada etapa destes esquemas e discuta uma vantagem/desvantagem do Esquema I do ponto de vista do KDC.}
+\subsection*{R:}
+\paragraph*{No esquema I}
+\begin{enumerate}[(a)]
+\item A deseja se comunicar com B, então envia para B seu ID($ID_A$) e um Nonce($N_A$) encriptado com sua chave secreta.
+\item B envia um pedido ao KDC passando: o ID de A, o pacote encriptado que recebeu de A ($EK_A(N_A)$), seu proprio ID($ID_B$) e um novo Nonce encriptado com sua chave secreta ($EK_B(N_B)$).
+\end{enumerate}
 
-\section*{Exercicio 2}
+\section*{Exercício 2}
 \paragraph{Para saber se uma pessoa tem uma chave secreta K igual à sua, você escolhe uma seqüência aleatória de bits A e envia o XOR dela com sua chave. O destinatário recebe a seqüência, faz XOR com a chave secreta combinada e devolve o resultado. Se este for igual à seqüência aleatória original, então as chaves são iguais. Portanto o teste foi feito sem necessidade de se transmitir nenhuma chave. Mas, existe uma falha no mesmo. Explique qual é.}
+\subsection*{R:}
+\subparagraph{Embora não haja o envio da chave neste esquema, caso a pessoa venha a conhecer a sequencia original, ela poderá através de simples operações XOR descobrir a chave secreta K}
 
-\section*{Exercicio 3}
+\section*{Exercício 3}
 \paragraph{ No protocolo de transporte fictício XTP são usadas duas funções hash simples de 16 bits cada: uma que faz um XOR bit a bit nos dados de 16 bits e outra chamada RXOR que faz um deslocamento circular de um bit para a direita no resultado parcial da função antes de fazer um XOR com os 16 bits do próximo dado. Os dois resultados são concatenados resultando em um código detetor de erros de 32 bits. Pergunta-se o seguinte sobre este código resultante.}
 \begin{enumerate}[(a)]
 \item Ele é capaz de detetar todos os erros que envolvam um número ímpar de bits? Por que?
@@ -42,11 +50,11 @@ Descreva a utilidade/necessidade de cada etapa destes esquemas e discuta uma van
 \item Ele é adequado para ser usado como código de autenticação de mensagens? Por que?
 \end{enumerate}
 
-\section*{Exercicio 4}
+\section*{Exercício 4}
 \paragraph{ Criptografia e funções hash podem ser usadas para controlar erros na transmissão de uma mensagem. Existe o tipo de controle interno (mensagem e código detetor de erro são concatenados e cifrados) e o externo (mensagem é cifrada antes do código detetor de erros ser calculado e concatenado a ela). Além dos códigos detetores de erros, existem ainda os códigos corretores de erro, os quais não só acusam a ocorrência de algum erro durante a transmissão como também permitem que tais erros sejam corrigidos sem necessidade de uma nova transmissão. Analise a viabilidade de se implantar códigos corretores de erro nos modos interno e externo como descrito acima.}
-\section*{Exercicio 5}
+\section*{Exercício 5}
 \paragraph{ Supondo que senhas se limitam aos 95 caracteres ASCII imprimíveis e que todas as senhas tenham 10 caracteres, determine o tempo necessário para se fazer uma busca exaustiva usando um circuito capaz de cifrar e comparar 6,4 milhões de senhas (de 10 caracteres) por segundo.}
-\section*{Exercicio 5}
+\section*{Exercício 5}
 \paragraph{Há basicamente 3 formas de se usar nonces:}
 \subparagraph{Forma 1:}
 \begin{enumerate}[(1)]
@@ -64,18 +72,18 @@ Descreva a utilidade/necessidade de cada etapa destes esquemas e discuta uma van
 \item $B -> A : Ek_\{f(N_a)\}$
 \end{enumerate}
 \subparagraph{Compare e discuta as 3 formas do ponto de vista da eficácia do nonce em cumprir sua tarefa.}
-\section*{Exercicio 7}
+\section*{Exercício 7}
 \paragraph{ No tópico relativo a assinaturas digitais intermediadas vimos que há duas maneiras de utilizar criptografia simétrica: uma na qual o intermediador pode ler a mensagem e outra na qual ele não pode ler. Mostre como estes 2 protocolos podem ser modificados para que o destinatário possa verificar a autenticidade da mensagem por si só, mas ainda havendo atuação do intermediador.}
-\section*{Exercicio 8}
+\section*{Exercício 8}
 \paragraph{ Em assinaturas digitais intermediadas com criptografia assimétrica temos uma codificação tripla na primeira parte do protocolo. Como o mesmo pode ser modificado de modo a eliminar esta tripla codificação?}
 
-\section*{Exercicio 9}
+\section*{Exercício 9}
 \paragraph{ Para minimizar os riscos envolvidos no sistema de senhas tradicional do Unix, recomenda-se a substituição do arquivo público de senhas por um arquivo público contendo as chaves pública (Kpu) e privada (Kpr) de cada usuário. A chave Kpr estaria cifrada por DES utilizando a senha (S) do usuário. Quando o mesmo fornecesse a senha, a chave Kpr seria decifrada e ficaria pronta para uso. Neste caso pergunta-se:}
 \begin{enumerate}[(a)]
 \item Como o sistema verifica que a senha S está correta?
 \item Como um invasor, que só conhece o novo arquivo público de senhas, tentaria entrar no sistema? Descreva todos os passos que ele seguiria.
 \end{enumerate}
-\section*{Exercicio 9}
+\section*{Exercício 9}
 \paragraph{ Considere o seguinte esquema de assinatura digital intermediada baseada em chave pública.}
 Ana --> Autoridade: IDA || EKprA [ IDA || EKpuB { EKprA ( M ) } ]
 Autoridade --> Beto: EKprAut [ IDA || EKpuB { EKprA ( M ) } ]
