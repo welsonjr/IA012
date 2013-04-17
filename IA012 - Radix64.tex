@@ -11,6 +11,7 @@
 \usepackage{amssymb}
 \usepackage{makeidx}
 \usepackage{graphicx}
+\usepackage{hyperref}
 \author{Welson Jr}
 \title{Codificação Radix-64/base64: exemplos, pontos fortes e fracos}
 \subtitle{IA012 - 2013}
@@ -28,7 +29,7 @@
 
 \AtBeginSection[]
 {
-\begin{frame}{Agenda}
+\begin{frame}
 	\tableofcontents[currentsection]
 \end{frame}
 }
@@ -44,17 +45,36 @@ Base encoding of data is used in many situations to store or transfer data in en
 \end{block}
 \end{frame}
 \subsection{Funcionamento}
-\begin{frame}
+\begin{frame}{Funcionamento}
 \transdissolve
-\begin{itemize}
-\item A entrada binaria é processada em blocos de 3 octetos, ou 24 bits.
-\item Cada conjunto de 6 do bloco de 24 bits é mapeado para um carácter Base64.
-\end{itemize}
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[height=4cm]{15fig11.jpg}
+\includegraphics[width=1\textwidth]{radix64.jpg}
 \end{center}
 \end{figure}
+\end{frame}
+\begin{frame}{Funcionamento}
+\begin{itemize}
+\item A entrada binaria é processada em blocos de 3 octetos, ou 24 bits.\\
+\item Cada conjunto de 6 do bloco de 24 bits é mapeado para um carácter Base64.\\
+\pause
+\item E caso o numero de bytes de entrada não seja divisível por 3?\\
+\pause
+\begin{enumerate}[{Caso} 1]
+\item Falte 1 octeto
+\pause
+\item Faltem 2 octetos
+\end{enumerate}
+\end{itemize}
+\end{frame}
+\subsection{Funcionamento}
+\begin{frame}{Funcionamento}
+Caso o numero de bytes de entrada não seja divisível por 3, tomam-se as seguintes medidas:
+\begin{itemize}
+\item Preenche-se com zeros os octetos faltantes, e converte-se normalmente segundo a tabela.
+\item Caso falte um octeto, adiciona-se um "=" ao final da sequencia.
+\item Caso falte 2 octetos, adiciona-se "==" ao final da sequencia.
+\end{itemize}
 \end{frame}
 \subsection{Caracteres Base 64}
 \begin{frame}{Caracteres Base 64}
@@ -90,19 +110,53 @@ Base encoding of data is used in many situations to store or transfer data in en
 \transdissolve
 \section{Exemplos de transformação}
 \subsection{Exemplo 1}
-\begin{frame}
+\begin{frame}{Exemplo 1}
 \transdissolve
-ex 1
+\begin{table}
+\begin{center}
+\scalebox{0.65}{
+\begin{tabular}{|c|cccccc|cccccc|cccccc|cccccc|}\hline
+\textbf{Texto} & \multicolumn{8}{c|}{M} &\multicolumn{8}{c|}{a} &\multicolumn{8}{c|}{n} \\ \hline
+\textbf{ASCII} & \multicolumn{8}{c|}{77} & \multicolumn{8}{c|}{97} & \multicolumn{8}{c|}{110} \\ \hline
+\textbf{Binario} & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 1 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & 0 \\ \hline
+\textbf{Decimal} & \multicolumn{6}{c|}{19} & \multicolumn{6}{c|}{22} & \multicolumn{6}{c|}{5} & \multicolumn{6}{c|}{46} \\ \hline
+\textbf{Base64} & \multicolumn{6}{c|}{T} & \multicolumn{6}{c|}{W} & \multicolumn{6}{c|}{F} & \multicolumn{6}{c|}{u} \\
+\hline
+\end{tabular}}
+\end{center}
+\end{table}
 \end{frame}
 \subsection{Exemplo 2}
-\begin{frame}
+\begin{frame}{Exemplo 2}
 \transdissolve
-ex 2
+\begin{table}
+\begin{center}
+\begin{tabular}{|cc|} \hline
+\multicolumn{2}{|c|}{\textbf{Dados de entrada}} \\ \hline
+Binário & 0000011 01011100 10010001 \\ \hline
+Hexadecimal & 235C91 \\ \hline \hline
+\multicolumn{2}{|c|}{\textbf{Codificação Base64}} \\ \hline \hline
+Base64 & I1yR \\ \hline
+ASCII Bin. & 01001001 00110001 01111001 01010010 \\ \hline
+Hexadecimal & 49317952 \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
 \end{frame}
 \subsection{Exemplo 3}
-\begin{frame}
+\begin{frame}{Exemplo 3}
 \transdissolve
-ex 3
+\begin{table}
+\begin{center}
+\scalebox{1}{
+\begin{tabular}{|c|c|} \hline
+\textbf{Texto} & \textbf{Base64 Encoding} \\ \hline \hline
+Testando o encoding :) & VGVzdGFuZG8gbyBlbmNvZGluZw== \\ \hline
+Testando o encoding : & VGVzdGFuZG8gbyBlbmNvZGluZyA6 \\ \hline
+Testando o encoding & VGVzdGFuZG8gbyBlbmNvZGluZyA6 \\ \hline
+\end{tabular}}
+\end{center}
+\end{table}
 \end{frame}
 \section{Pontos fortes}
 \begin{frame}{Pontos fortes}
@@ -121,5 +175,31 @@ Este overhead pode ser estimado em: $4 \times \lceil \frac{n}{3} \rceil$ bytes p
 \item Torna difícil a detecção de SPAM em correio eletrônico.
 \end{itemize}
 \end{frame}
+\section{Usos mais comuns}
+\begin{frame}{Usos mais comuns}
+\transdissolve
+\begin{itemize}
+\item PGP
+\item MIME
+\item S/MIME
+\end{itemize}
+\end{frame}
 \section{Questões}
+\begin{frame}{Questões}
+\transdissolve
+\begin{enumerate}
+\item Codifique "123" de ASCII para base 64.
+\item É seguro utilizar Base64 como um meio de se proteger uma aplicação de login?
+\item Como codificar um dado que possui menos de 6 bits?
+\end{enumerate}
+\end{frame}
+\section{Referencias}
+\begin{frame}{Referencias}
+\begin{itemize}
+\item Stallings, William, \emph{ Criptography and Network Security}, Pearson Prentice Hall, 2008.
+\item RFC 3548, The Base16, Base32, and Base64 Data Encodings, \url{http://tools.ietf.org/html}
+\item RFC 4648, The Base16, Base32, and Base64 Data Encodings, \url{http://tools.ietf.org/html/rfc4648}
+\item Wikipedia, Base64, disponível em: \url{http://en.wikipedia.org/wiki/Base64}
+\end{itemize}
+\end{frame}
 \end{document}
