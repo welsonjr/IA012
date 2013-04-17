@@ -1,0 +1,125 @@
+\documentclass[pdf]{beamer}
+\mode<presentation>
+{
+	\usetheme{Warsaw}
+}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\author{Welson Jr}
+\title{Codificação Radix-64/base64: exemplos, pontos fortes e fracos}
+\subtitle{IA012 - 2013}
+\makeindex
+\begin{document}
+\begin{frame}
+\transdissolve
+\maketitle
+\end{frame}
+\section{Agenda}
+\begin{frame}{Agenda}
+\transdissolve
+	\tableofcontents
+\end{frame}
+
+\AtBeginSection[]
+{
+\begin{frame}{Agenda}
+	\tableofcontents[currentsection]
+\end{frame}
+}
+
+\section{O que é Base 64}
+\subsection{Introdução}
+\begin{frame}{Introdução}
+\transdissolve
+Base ou Radix 64 é uma técnica que converte uma entrada de dados binários em texto de caracteres imprimíveis para que possam ser transportados por qualquer meio de transmissão.
+\pause
+\begin{block}{De acordo com a RFC 3548}
+Base encoding of data is used in many situations to store or transfer data in environments that, perhaps for legacy reasons, are restricted to US-ASCII data.  Base encoding can also be used in new applications that do not have legacy restrictions, simply because it makes it possible to manipulate objects with text editors.
+\end{block}
+\end{frame}
+\subsection{Funcionamento}
+\begin{frame}
+\transdissolve
+\begin{itemize}
+\item A entrada binaria é processada em blocos de 3 octetos, ou 24 bits.
+\item Cada conjunto de 6 do bloco de 24 bits é mapeado para um carácter Base64.
+\end{itemize}
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[height=4cm]{15fig11.jpg}
+\end{center}
+\end{figure}
+\end{frame}
+\subsection{Caracteres Base 64}
+\begin{frame}{Caracteres Base 64}
+\transdissolve
+\begin{table}
+\scalebox{0.75}{
+\begin{tabular}{||c|c|c|c|c|c|c|c||}
+\hline
+\textbf{Valor} & \textbf{Char} & \textbf{Valor} & \textbf{Char} & \textbf{Valor} & \textbf{Char} & \textbf{Valor} & \textbf{Char} \\ 
+\hline \hline
+0 & A & 16 & Q & 32 & g & 48 & w \\
+1 & B & 17 & R & 33 & h & 49 & x \\
+2 & C & 18 & S & 34 & i & 50 & y \\
+3 & D & 19 & T & 35 & j & 51 & z \\
+4 & E & 20 & U & 36 & k & 52 & 0 \\
+5 & F & 21 & V & 37 & l & 53 & 1 \\
+6 & G & 22 & W & 38 & m & 54 & 2 \\
+7 & H & 23 & X & 39 & n & 55 & 3 \\
+8 & I & 24 & Y & 40 & o & 56 & 4 \\
+9 & J & 25 & Z & 41 & p & 57 & 5 \\
+10 & K & 26 & a & 42 & q & 58 & 6 \\
+11 & L & 27 & b & 43 & r & 59 & 7 \\
+12 & M & 28 & c & 44 & s & 60 & 8 \\
+13 & N & 29 & d & 45 & t & 61 & 9 \\
+14 & O & 30 & e & 46 & u & 62 & + \\
+15 & P & 31 & f & 47 & v & 63 & / \\ 
+& & & & & & (pad) & = \\
+\hline
+\end{tabular}}
+\caption{Tabela de codificaçao}\label{tab:table_cod}
+\end{table}
+\end{frame}
+\transdissolve
+\section{Exemplos de transformação}
+\subsection{Exemplo 1}
+\begin{frame}
+\transdissolve
+ex 1
+\end{frame}
+\subsection{Exemplo 2}
+\begin{frame}
+\transdissolve
+ex 2
+\end{frame}
+\subsection{Exemplo 3}
+\begin{frame}
+\transdissolve
+ex 3
+\end{frame}
+\section{Pontos fortes}
+\begin{frame}{Pontos fortes}
+\transdissolve
+\begin{itemize}
+\item Faz uso apenas de caracteres universalmente empregados em todos os lugares.
+\item Devido a não ter caracteres de controle, essa transformação torna os dados praticamente invulneráveis ao processamento de programas de transporte.
+\end{itemize}
+\end{frame}
+\section{Pontos fracos}
+\begin{frame}{Pontos fracos}
+\transdissolve
+\begin{itemize}
+\item Aumenta o tamanho da mensagem em cerca de 33\%. \\
+Este overhead pode ser estimado em: $4 \times \lceil \frac{n}{3} \rceil$ bytes para cada byte $n$ de entrada
+\item Torna difícil a detecção de SPAM em correio eletrônico.
+\end{itemize}
+\end{frame}
+\section{Questões}
+\end{document}
