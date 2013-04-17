@@ -9,8 +9,9 @@
 \usepackage{graphicx}
 \usepackage{enumerate}
 \author{Welson Jr}
-\title{Lista de Exercícios II}
+\title{Lista de Exercícios II IA012}
 \begin{document}
+\maketitle
 \section*{Exercício 1} 
 \paragraph{ Considere os seguintes esquemas de distribuição de chaves:}
 \subparagraph{ Esquema I:}
@@ -34,11 +35,17 @@ Descreva a utilidade/necessidade de cada etapa destes esquemas e discuta uma van
 \paragraph*{No esquema I}
 \begin{enumerate}[(a)]
 \item A deseja se comunicar com B, então envia para B seu ID($ID_A$) e um Nonce($N_A$) encriptado com sua chave secreta.
-\item B envia um pedido ao KDC passando: o ID de A, o pacote encriptado que recebeu de A ($EK_A(N_A)$), seu proprio ID($ID_B$) e um novo Nonce encriptado com sua chave secreta ($EK_B(N_B)$).
+\item B envia um pedido ao KDC passando: o ID de A, o pacote encriptado que recebeu de A ($EK_A(N_A)$), seu proprio ID($ID_B$) e um novo Nonce encriptado com sua chave secreta ($EK_B(N_B)$). O KDC descriptografa o pacote e recupera o Nonce enviado por A para compor a resposta para B.
+\item O KDC etão envia um pacote encriptado contendo uma chave de sessão $K_S$ o ID de a ($ID_A$) e o Nonce enviado por B($N_B$) para identificar que esta mensagem é uma resposta a requisição anterior; caso contrario poderia ser uma mensagem antiga repetida; e envia também um pacote encriptado com a chave de A ($EK_A(K_S,ID_B,N_A)$) para que seja enviado a A.
+\item B envia para A o pacote encriptado com a chave secreta de A recebido do KDC($EK_A(K_S,ID_B,N_A)$). A pode então decriptar o pacote, verificar que se trata de uma resposta a sua solicitação inicial devido ao Nonce ($N_A$) e iniciar a comunicação segura com B através da chave de sessão $K_S$
+\end{enumerate}
+\paragraph*{No esquema 2}
+\begin{enumerate}[(a)]
+\item
 \end{enumerate}
 
 \section*{Exercício 2}
-\paragraph{Para saber se uma pessoa tem uma chave secreta K igual à sua, você escolhe uma seqüência aleatória de bits A e envia o XOR dela com sua chave. O destinatário recebe a seqüência, faz XOR com a chave secreta combinada e devolve o resultado. Se este for igual à seqüência aleatória original, então as chaves são iguais. Portanto o teste foi feito sem necessidade de se transmitir nenhuma chave. Mas, existe uma falha no mesmo. Explique qual é.}
+\paragraph{Para saber se uma pessoa tem uma chave secreta K igual à sua, você escolhe uma sequência aleatória de bits A e envia o XOR dela com sua chave. O destinatário recebe a sequência, faz XOR com a chave secreta combinada e devolve o resultado. Se este for igual à sequência aleatória original, então as chaves são iguais. Portanto o teste foi feito sem necessidade de se transmitir nenhuma chave. Mas, existe uma falha no mesmo. Explique qual é.}
 \subsection*{R:}
 \subparagraph{Embora não haja o envio da chave neste esquema, caso a pessoa venha a conhecer a sequencia original, ela poderá através de simples operações XOR descobrir a chave secreta K}
 
@@ -54,7 +61,7 @@ Descreva a utilidade/necessidade de cada etapa destes esquemas e discuta uma van
 \paragraph{ Criptografia e funções hash podem ser usadas para controlar erros na transmissão de uma mensagem. Existe o tipo de controle interno (mensagem e código detetor de erro são concatenados e cifrados) e o externo (mensagem é cifrada antes do código detetor de erros ser calculado e concatenado a ela). Além dos códigos detetores de erros, existem ainda os códigos corretores de erro, os quais não só acusam a ocorrência de algum erro durante a transmissão como também permitem que tais erros sejam corrigidos sem necessidade de uma nova transmissão. Analise a viabilidade de se implantar códigos corretores de erro nos modos interno e externo como descrito acima.}
 \section*{Exercício 5}
 \paragraph{ Supondo que senhas se limitam aos 95 caracteres ASCII imprimíveis e que todas as senhas tenham 10 caracteres, determine o tempo necessário para se fazer uma busca exaustiva usando um circuito capaz de cifrar e comparar 6,4 milhões de senhas (de 10 caracteres) por segundo.}
-\section*{Exercício 5}
+\section*{Exercício 6}
 \paragraph{Há basicamente 3 formas de se usar nonces:}
 \subparagraph{Forma 1:}
 \begin{enumerate}[(1)]
@@ -83,13 +90,14 @@ Descreva a utilidade/necessidade de cada etapa destes esquemas e discuta uma van
 \item Como o sistema verifica que a senha S está correta?
 \item Como um invasor, que só conhece o novo arquivo público de senhas, tentaria entrar no sistema? Descreva todos os passos que ele seguiria.
 \end{enumerate}
-\section*{Exercício 9}
+\section*{Exercício 10}
 \paragraph{ Considere o seguinte esquema de assinatura digital intermediada baseada em chave pública.}
 Ana --> Autoridade: IDA || EKprA [ IDA || EKpuB { EKprA ( M ) } ]
 Autoridade --> Beto: EKprAut [ IDA || EKpuB { EKprA ( M ) } ]
 Explique que problema pode ocorrer caso o remetente tenha mais de um par de chaves e um dos pares tenha sido comprometido.
 
-(11) O sistema de senhas tradicional do Unix faz uso de 12 bits extras (conhecidos como sal).
+\section*{Exercício 11}
+O sistema de senhas tradicional do Unix faz uso de 12 bits extras (conhecidos como sal).
 Explique como o sal é gerado e usado.
 Explique qual é a sua vantagem.
 Dobrar o triplicar o número de bits do sal usado no esquema de senhas do Unix não aumenta significativamente a dificuldade de invasores em quebrar senhas (considerando que o invasor possui o arquivo de senhas). Por quê?
@@ -109,7 +117,7 @@ Descreva qual é o tipo de aliança (acordo) entre os envolvidos que poderia sur
 
 (16) Existem várias maneiras de se usar funções de hash para autenticar mensagens. Normalmente estas autenticações envolvem o uso de criptografia, seja da mensagem toda ou somente do código hash. Entretanto, o uso de criptografia não é essencial. Mostre como uma função de hash pode ser usada para autenticar e conferir a autenticidade de uma mensagem M sem recorrer aos recursos da criptografia. Considere a função hash como uma caixa preta cujo conteúdo (implementação) é desconhecido.
 
-(17) Os algoritmos de chave assimétrica são úteis na codificação e distribuição de chaves de sessão descartáveis que serão usadas em algoritmos simétricos mais rápidos. Nessa distribuição deve-se ter o cuidado de evitar que repetições de mensagens interceptadas no passado possam ser usadas por invasores para se fazer passar por um usuário legítimo. Uma maneira de se contornar este problema é associar carimbos de tempo à chave de sessão sendo distribuída. Mas esta solução exige que os relógios dos vários sistemas envolvidos estejam sincronizados, o que é uma exigência difícil de ser cumprida sempre. O protocolo abaixo mostra como se pode usar números aleatórios (nonces) para distribuir chaves de sessão de forma confiável e sem recorrer a relógios. Mostre como este protocolo pode ser reduzido de 7 para 5 passos, sem perder suas características e objetivos.
+(17) Os algoritmos de chave assimétrica são úteis na codificação e distribuição de chaves de sessão descartáveis que serão usadas em algoritmos simétricos mais rápidos. Nessa distribuição deve-se ter o cuidado de evitar que repetições de mensagens interceptadas no passado possam ser usadas por invasores para se fazer passar por um usuário legítimo. Uma maneira de se contornar este problema é associar carimbos de tempo à chave de sessão sendo distribuída. Mas esta solução exige que os relógios dos vários sistemas envolvidos estejam sincronizados, o que é uma exigência difícil de ser cumprida sempre. O protocolo abaixo mostra como se pode usar números aleatórios (Nonces) para distribuir chaves de sessão de forma confiável e sem recorrer a relógios. Mostre como este protocolo pode ser reduzido de 7 para 5 passos, sem perder suas características e objetivos.
 Versão original
 A --> KDC : IDA || IDB
 KDC --> A : EKprKDC{IDB || KpuB}

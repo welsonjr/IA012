@@ -1,0 +1,11 @@
+*.aux
+*.dvi
+*.idx
+*.log
+*.pdf
+*.synctex.gz
+*.swp
+*.toc
+*.nav
+*.out
+*.snm
