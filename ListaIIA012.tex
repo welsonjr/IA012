@@ -16,18 +16,18 @@
 \paragraph{ Considere os seguintes esquemas de distribuição de chaves:}
 \subparagraph{ Esquema I:}
 \begin{enumerate}[(1)]
-\item $A -> B: ID_A, EK_A(N_A)$
-\item $B -> KDC: ID_A, EK_A(N_A), ID_B, EK_B(N_B)$
-\item $KDC -> B: EK_B(K_S, ID_A, N_B), EK_A(K_S, ID_B, N_A)$
-\item $B -> A: EK_A(K_S, ID_B, N_A)$
+\item $A \rightarrow B: ID_A, EK_A(N_A)$
+\item $B \rightarrow KDC: ID_A, EK_A(N_A), ID_B, EK_B(N_B)$
+\item $KDC \rightarrow B: EK_B(K_S, ID_A, N_B), EK_A(K_S, ID_B, N_A)$
+\item $B \rightarrow A: EK_A(K_S, ID_B, N_A)$
 \end{enumerate}
 \subparagraph{ Esquema II:}
 \begin{enumerate}[(1)]
-\item $A -> KDC: Pedido || N_1$
-\item $KDC -> A: EK_A\{K_S || Pedido || N_1 || EK_B(K_S, ID_A)\}$
-\item $A -> B: EK_B(K_S, ID_A)$
-\item $B -> A: EK_S(N_2)$
-\item $A -> B: EK_S\{ f(N_2) \}$
+\item $A \rightarrow KDC: Pedido || N_1$
+\item $KDC \rightarrow A: EK_A\{K_S || Pedido || N_1 || EK_B(K_S, ID_A)\}$
+\item $A \rightarrow B: EK_B(K_S, ID_A)$
+\item $B \rightarrow A: EK_S(N_2)$
+\item $A \rightarrow B: EK_S\{ f(N_2) \}$
 \end{enumerate}
 \subparagraph{
 Descreva a utilidade/necessidade de cada etapa destes esquemas e discuta uma vantagem/desvantagem do Esquema I do ponto de vista do KDC.}
@@ -62,23 +62,25 @@ Descreva a utilidade/necessidade de cada etapa destes esquemas e discuta uma van
 \section*{Exercício 5}
 \paragraph{ Supondo que senhas se limitam aos 95 caracteres ASCII imprimíveis e que todas as senhas tenham 10 caracteres, determine o tempo necessário para se fazer uma busca exaustiva usando um circuito capaz de cifrar e comparar 6,4 milhões de senhas (de 10 caracteres) por segundo.}
 \section*{Exercício 6}
-\paragraph{Há basicamente 3 formas de se usar nonces:}
+\paragraph{Há basicamente 3 formas de se usar Nonces:}
 \subparagraph{Forma 1:}
 \begin{enumerate}[(1)]
-\item $A -> B : Na$
-\item $B -> A : Ek(Na)$
+\item $A \rightarrow B : N_a$
+\item $B \rightarrow A : Ek(N_a)$
 \end{enumerate}
 \subparagraph{Forma 2:}
 \begin{enumerate}[(1)]
-\item $A -> B : Ek(N_a)$
-\item $B -> A : N_a$
+\item $A \rightarrow B : Ek(N_a)$
+\item $B \rightarrow A : N_a$
 \end{enumerate}
 \subparagraph{Forma 3:}
 \begin{enumerate}[(1)]
-\item $A -> B : Ek(N_a)$
-\item $B -> A : Ek_\{f(N_a)\}$
+\item $A \rightarrow B : Ek(N_a)$
+\item $B \rightarrow A : Ek\{f(N_a)\}$
 \end{enumerate}
-\subparagraph{Compare e discuta as 3 formas do ponto de vista da eficácia do nonce em cumprir sua tarefa.}
+\paragraph{Compare e discuta as 3 formas do ponto de vista da eficácia do Nonce em cumprir sua tarefa.}
+\subsection{R:}
+\subparagraph{Na forma 1}
 \section*{Exercício 7}
 \paragraph{ No tópico relativo a assinaturas digitais intermediadas vimos que há duas maneiras de utilizar criptografia simétrica: uma na qual o intermediador pode ler a mensagem e outra na qual ele não pode ler. Mostre como estes 2 protocolos podem ser modificados para que o destinatário possa verificar a autenticidade da mensagem por si só, mas ainda havendo atuação do intermediador.}
 \section*{Exercício 8}
@@ -92,8 +94,8 @@ Descreva a utilidade/necessidade de cada etapa destes esquemas e discuta uma van
 \end{enumerate}
 \section*{Exercício 10}
 \paragraph{ Considere o seguinte esquema de assinatura digital intermediada baseada em chave pública.}
-Ana --> Autoridade: IDA || EKprA [ IDA || EKpuB { EKprA ( M ) } ]
-Autoridade --> Beto: EKprAut [ IDA || EKpuB { EKprA ( M ) } ]
+Ana $\rightarrow$ Autoridade: IDA || EKprA [ IDA || EKpuB { EKprA ( M ) } ]
+Autoridade $\rightarrow$ Beto: EKprAut [ IDA || EKpuB { EKprA ( M ) } ]
 Explique que problema pode ocorrer caso o remetente tenha mais de um par de chaves e um dos pares tenha sido comprometido.
 
 \section*{Exercício 11}
@@ -105,8 +107,8 @@ Explique os efeitos de se aumentar o número de bits do sal em um sistema com po
 Explique os efeitos de se aumentar o número de bits do sal em um sistema com muitos usuários.
 
 (12) Considere o seguinte esquema de assinatura digital intermediada baseada em chave pública.
-Ana --> Autoridade: IDA || EKprA [ IDA || EKpuB { EKprA ( M ) } ]
-Autoridade --> Beto: EKprAut [ IDA || EKpuB { EKprA ( M ) } ]
+Ana $\rightarrow$ Autoridade: IDA || EKprA [ IDA || EKpuB { EKprA ( M ) } ]
+Autoridade $\rightarrow$ Beto: EKprAut [ IDA || EKpuB { EKprA ( M ) } ]
 Descreva qual é o tipo de aliança (acordo) entre os envolvidos que poderia surgir a fim de fraudar o sistema. Dica: a fraude se basearia em uma situação tão pouco provável que dificilmente tal aliança teria sucesso.
 
 (13) Explique o que são certificados, para que servem e mostre como eles são usados.
@@ -119,18 +121,18 @@ Descreva qual é o tipo de aliança (acordo) entre os envolvidos que poderia sur
 
 (17) Os algoritmos de chave assimétrica são úteis na codificação e distribuição de chaves de sessão descartáveis que serão usadas em algoritmos simétricos mais rápidos. Nessa distribuição deve-se ter o cuidado de evitar que repetições de mensagens interceptadas no passado possam ser usadas por invasores para se fazer passar por um usuário legítimo. Uma maneira de se contornar este problema é associar carimbos de tempo à chave de sessão sendo distribuída. Mas esta solução exige que os relógios dos vários sistemas envolvidos estejam sincronizados, o que é uma exigência difícil de ser cumprida sempre. O protocolo abaixo mostra como se pode usar números aleatórios (Nonces) para distribuir chaves de sessão de forma confiável e sem recorrer a relógios. Mostre como este protocolo pode ser reduzido de 7 para 5 passos, sem perder suas características e objetivos.
 Versão original
-A --> KDC : IDA || IDB
-KDC --> A : EKprKDC{IDB || KpuB}
-A --> B : EKpuB{NA || IDA}
-B --> KDC : IDA || IDB || EKpuKDC{NA}
-KDC --> B : EKprKDC{IDA || KpuA} || EKpuB{EKprKDC(NA || IDA || IDB ||KS)}
-B --> A : EKpuA{NB||EKprKDC(NA || IDA || IDB ||KS
-Versão reduzida
-A --> B :
-B --> KDC :
-KDC --> B :
-B --> A :
-A --> B : EKs{NB} <-- dica
+$A \rightarrow KDC : ID_A || ID_B$ \\
+$KDC \rightarrow A : EK_{prKDC}\{ID_B || K_{puB}\}$\\
+$A \rightarrow B : EK_{puB}\{N_A || ID_A\}$\\
+$B \rightarrow KDC : ID_A || ID_B || EK_{puKDC}\{N_A\}$\\
+$KDC \rightarrow B : EK_{prKDC}\{ID_A || K_{puA}\} || EK_{puB}\{EK_{prKDC}(N_A || ID_A || ID_B ||K_S)\}$\\
+$B \rightarrow A : EK_{puA}\{N_B||EK_{prKDC}(N_A || ID_A || ID_B ||K_S\}$\\
+Versão reduzida\\
+$A \rightarrow B :$\\
+$B \rightarrow KDC :$\\
+$KDC \rightarrow B :$\\
+$B \rightarrow A :$\\
+$A \rightarrow B : EK_s{N_B}$ <-- dica\\
 
 (18) O que são chave-mestra e chave de sessão? Quais são as vantagens em utilizá-las?
 

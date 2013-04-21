@@ -187,10 +187,17 @@ Este overhead pode ser estimado em: $4 \times \lceil \frac{n}{3} \rceil$ bytes p
 \section{Questões}
 \begin{frame}{Questões}
 \transdissolve
-\begin{enumerate}
+\begin{enumerate}[(a)]
 \item Codifique "123" de ASCII para base 64.
 \item É seguro utilizar Base64 como um meio de se proteger uma aplicação de login?
 \item Como codificar um dado que possui menos de 6 bits?
+\end{enumerate}
+\end{frame}
+\begin{frame}
+\begin{enumerate}[(a)]
+\item MTIz
+\item Não é seguro, a "segurança" na transformação em base 64 é no sentido de que é seguro transmitir em base 64 porque devido a não existir caracteres de controle não se tem o risco de algum equipamento interpretar erroneamente o conteúdo da mensagem como comandos.
+\item Não é possível, embora seja possível aplicar a regra de preencher-se com zero os bits e octetos faltantes a decodificação não sera totalmente confiável.
 \end{enumerate}
 \end{frame}
 \section{Referencias}
