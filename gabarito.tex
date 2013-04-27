@@ -1,4 +1,8 @@
-\documentclass[10pt,a4paper]{beamer}
+\documentclass[pdf]{beamer}
+\mode<presentation>
+{
+	\usetheme{Warsaw}
+}
 \usepackage[utf8]{inputenc}
 \usepackage[portuguese]{babel}
 \usepackage[T1]{fontenc}
@@ -11,11 +15,28 @@
 \author{Welson Jr}
 \begin{document}
 \begin{frame}{Gabarito}
-
-\begin{enumerate}[(a)]
-\item MTIz
-\item Não é seguro, a "segurança" na transformação em base 64 é no sentido de que é seguro transmitir em base 64 porque devido a não existir caracteres de controle não se tem o risco de algum equipamento interpretar erroneamente o conteúdo da mensagem como comandos.
-\item Não é possível, embora seja possível aplicar a regra de preencher-se com zero os bits e octetos faltantes a decodificação não sera totalmente confiável.
-\end{enumerate}
+\begin{block}{Exercício a}
+\begin{table}
+\begin{center}
+\scalebox{0.60}{
+\begin{tabular}{|c|cccccccc|cccccccc|cccccccc|}
+\hline 
+\textbf{Texto} & \multicolumn{8}{c|}{1} & \multicolumn{8}{c|}{2} & \multicolumn{8}{c|}{3} \\ \hline
+\textbf{ASCII} & \multicolumn{8}{c|}{31} & \multicolumn{8}{c|}{32} & \multicolumn{8}{c|}{33} \\ \hline
+\textbf{Binário} & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 1 &  0 & 0 & 1 & 1 & 0 & 0 & 1 & 0 &  0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\ \hline
+\textbf{Base 64} & \multicolumn{6}{c|}{12} & \multicolumn{6}{c|}{19} & \multicolumn{6}{c|}{8} & \multicolumn{6}{c|}{51} \\ \hline
+\textbf{Texto Base 64} & \multicolumn{6}{c|}{M} & \multicolumn{6}{c|}{T} & \multicolumn{6}{c|}{I} & \multicolumn{6}{c|}{z} \\ \hline
+\end{tabular}}
+\end{center}
+\end{table}
+\end{block}
+\begin{block}{Exercício b}
+Não é seguro, a "segurança" na transformação em base 64 é no sentido de que é seguro transmitir em base 64 porque devido a não existir caracteres de controle não se tem o risco de algum equipamento interpretar erroneamente o conteúdo da mensagem como comandos.
+\end{block}
+\end{frame}
+\begin{frame}
+\begin{block}{Exercício c}
+Não é possível, embora seja possível aplicar a regra de preencher-se com zero os bits e octetos faltantes a decodificação não sera totalmente confiável.
+\end{block}
 \end{frame}
 \end{document}
