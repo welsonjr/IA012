@@ -68,6 +68,7 @@
 
 \section*{Exercício 14}
 \paragraph{Assinatura Digital Intermediada: explique o que é, por que é necessária e dê um exemplo de utilização, mostrando as informações que são trocadas entre as partes.}
+\paragraph{R:}
 
 \section*{Exercício 16}
 \paragraph{Existem várias maneiras de se usar funções de hash para autenticar mensagens. Normalmente estas autenticações envolvem o uso de criptografia, seja da mensagem toda ou somente do código hash. Entretanto, o uso de criptografia não é essencial. Mostre como uma função de hash pode ser usada para autenticar e conferir a autenticidade de uma mensagem M sem recorrer aos recursos da criptografia. Considere a função hash como uma caixa preta cujo conteúdo (implementação) é desconhecido.}
@@ -77,6 +78,26 @@
 
 \section*{Exercício 20}
 \paragraph{Explique detalhadamente como funciona o esquema de troca de chaves proposto por Diffie e Helmann em 1976.}
+\section*{R:}
+\subparagraph{Diffie-Hellman propõe o uso de um algoritmo baseado no calculo do logaritmo discreto com base em dois valores públicos $\alpha$ e $p$ para que duas partes negociem uma chave secreta temporária para uma comunicação posterior. Em uma possível negociação entre as partes A e B o algorítimo tem os seguintes passos:}
+\begin{enumerate}
+\item Existe inicialmente dois números conhecidos publicamente $\alpha$ e $p$. Onde $\alpha < p$ e $\alpha$ é a raiz primitiva no numero primo $p$.
+\item Ambas as partes escolhem aleatoriamente um numero X < $p$ para ser suas chaves privadas eo mantem em segredo.
+\item Cada parte calcula $Y = \alpha^X \pmod p$ e transmite este numero sua contraparte.
+\item A então calcula a chave $K$ com base no valor $Y_B$, $K=(Y_B)^{X_A} \pmod p $
+\item B por sua vez faz o mesmo com o valor $Y_A$, $K = (Y_A)^{X_B} \pmod p$
+\item com base nas propriedades da aritmética modular A e B chegarão ao mesmo valor para a chave $K$ como pode ser observado a seguir:
+\end{enumerate}
+\begin{align}
+K & = (Y_B)^{X_A} \bmod p \\
+& = (\alpha^{X_B} \bmod p)^{X_A} \bmod p \\
+& = (\alpha^{X_B})^{X_A} \bmod p  & \textrm{pelas regras da aritmética modular} \\ 
+& = \alpha^{X_BX_A} \bmod p \\
+& = (\alpha^{X_A} \bmod p)^{X_B} \bmod p \\
+& = (Y_A)^{X_B} \bmod p
+\end{align}
+
+
 
 \section*{Exercício 22}
 \paragraph{Sabe-se que é possível criar métodos de criptografia baseados na família de funções matemáticas conhecida como Curvas Elípticas (CE). Mostre os procedimentos para cifrar e decifrar por este algoritmo supondo que fossem usados os pontos da curva y2 = x3 + x + 1 mod 23 (curva sobre corpo finito primo). Desenvolva um exemplo, mostrando a cifragem e a decifragem da dezena final de seu RA. (Dica: use o algoritmo proposto por Menezes-Vanstone que admite que a mensagem M seja um ponto não pertencente à curva, isto é, ela pode ser formada por um par arbitrário de inteiros.)}
