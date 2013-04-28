@@ -53,32 +53,74 @@
 
 \section*{Exercício 8}
 \paragraph{ Em assinaturas digitais intermediadas com criptografia assimétrica temos uma codificação tripla na primeira parte do protocolo. Como o mesmo pode ser modificado de modo a eliminar esta tripla codificação?}
+\subsection*{R:}
 
 \section*{Exercício 10}
 \paragraph{ Considere o seguinte esquema de assinatura digital intermediada baseada em chave pública.}
 \subparagraph{$Ana \rightarrow Autoridade: ID_A || EK_{prA} [ ID_A || EK_{puB} \{ EK_{prA} ( M ) \} ]$ }
 \subparagraph{$Autoridade \rightarrow Beto: EK_{prAut} [ ID_A || EK_{puB} \{ EK_{prA} ( M )\} ]$ }
 \paragraph{Explique que problema pode ocorrer caso o remetente tenha mais de um par de chaves e um dos pares tenha sido comprometido.}
+\subsection*{R:}
+\subparagraph{Supondo que Ana tenha mais de um par de chaves, um deles tenha sido comprometido e não exista um mecanismo ou meio de se notificar a Autoridade certificadora sobre esta falha, um atacante poderia iniciar comunicações com Beto através da Autoridade, assumindo a identidade de Ana pelo canal oficial, e Beto não possuiria meios de descobrir a fraude pois ela seria tratada como legitima do ponto de vista da Autoridade e de Beto}
 
 \section*{Exercício 12}
 \paragraph{Considere o seguinte esquema de assinatura digital intermediada baseada em chave pública.} 
-\subparagraph{$Ana \rightarrow Autoridade: ID_A || EK_{prA} [ ID_A || EK_{puB} \{ EK_{prA} ( M ) \} ]$ }
+\subparagraph{$Ana \rightarrow Autoridade: ID_A || EK_{prA} [ ID_A || EK_{puB} \{ EK_{prA} ( M ) \} ]$}
 \subparagraph{$Autoridade \rightarrow Beto:  EK_{prAut} [ ID_A || EK_{puB} \{ EK_{prA} ( M ) \} ]$}
 \paragraph{Descreva qual é o tipo de aliança (acordo) entre os envolvidos que poderia surgir a fim de fraudar o sistema. Dica: a fraude se basearia em uma situação tão pouco provável que dificilmente tal aliança teria sucesso.}
+\subsection*{R:}
 
 \section*{Exercício 14}
 \paragraph{Assinatura Digital Intermediada: explique o que é, por que é necessária e dê um exemplo de utilização, mostrando as informações que são trocadas entre as partes.}
-\paragraph{R:}
+\subsection*{R:}
+\subparagraph{O Esquema de assinatura Digital Intermediada é similar ao funcionamento de um tabelião. As partes confiam em uma Autoridade que é responsável por certificar a autenticidade da comunicação, evitando assim disputas. Existem basicamente 3 formas e funcionamento:}
+\subparagraph{Com criptografia convencional e o arbitro vê a mensagem. }
+\begin{enumerate}
+\item $X \rightarrow A: M||EK_{XA}([ID_X||H(M)])$
+\item $A \rightarrow Y: E_{YA}(ID_X||M||EK_{XA}(ID_X||H(M))) $
+\end{enumerate}
+
+\subparagraph{Com criptografia convencional e o arbitro não vê a mensagem. }
+\begin{enumerate}
+\item $X \rightarrow A: ID_X||E_{XY}(M)||E_{XA}(ID_X||H(E_{XY}(M)||T))$
+\item $A \rightarrow Y: E_{YA}(ID_X||E_{XY}(M))||E_{XA}(ID_X||H(E_{XY}(M))||T)$
+\end{enumerate}
+
+\subparagraph{Com criptografia de chave publica e o arbitro não vê a mensagem. }
+\begin{enumerate}
+\item $X \rightarrow A: ID_X||E_{pr_X}(ID_X||E_{pu_Y}(E_{pr_X}(M)))$
+\item $A \rightarrow Y: E_{pr_A}(ID_X||E_{pu_Y}(E_{pr_X}(M))||T)$
+\end{enumerate}
 
 \section*{Exercício 16}
 \paragraph{Existem várias maneiras de se usar funções de hash para autenticar mensagens. Normalmente estas autenticações envolvem o uso de criptografia, seja da mensagem toda ou somente do código hash. Entretanto, o uso de criptografia não é essencial. Mostre como uma função de hash pode ser usada para autenticar e conferir a autenticidade de uma mensagem M sem recorrer aos recursos da criptografia. Considere a função hash como uma caixa preta cujo conteúdo (implementação) é desconhecido.}
+\subsection*{R:}
+\subparagraph{Uma técnica simples pode ser empregada:}
+\begin{enumerate}[(1)]
+\item  Primeiro as duas partes combinam entre si uma chave secreta K do mesmo tamanho que o código hash.
+\item Então calcula-se o código hash H sobre a mensagem M.
+\\ $A: H(M)$
+\item Efetua-se uma operação Xor entre a mensagem K e o resultado do calculo do hash e este é o código de autenticação.
+\\ $A:MAC = H(M) \oplus K$
+\item Concatena-se esse novo código junto com a mensagem M e transmite ao destinatário
+\\ $A \rightarrow B: M||MAC$
+\item O destinatário recupera o código de autenticação reverte a operação Xor com a chave K, obtendo assim o código hash H
+\\ $B:H(M) = MAC \oplus K $
+\item Calcula o hash sobre a mensagem e compara com o recebido. Se os dois baterem o destinatário tem certeza de quem enviou a mensagem, pois apenas ele e o emitente possuem a chave K.
+\end{enumerate}
+
+
 
 \section*{Exercício 18}
 \paragraph{O que são chave-mestra e chave de sessão? Quais são as vantagens em utilizá-las?}
+\subsection*{R:}
+\subparagraph{Chave-mestra é uma chave de longa duração utilizada pelo usurário ou sistema final e o Centro de Distribuição de Chaves.}
+\subparagraph{Já a chave de sessão é uma chave obtida temporariamente apenas para uso durante uma conexão logica, sendo descartada posteriormente}
+\subparagraph{A vantagem neste esquema esta no fato que a chave mestra é utilizada durante pouquíssimo tempo apenas no inicio da comunicação para se estabelecer uma chave de sessão evitando assim que um possível atacante acumule muitos dados. E o uso posterior de uma chave temporária, a chave de sessão, para a comunicação que é descartada depois do processo, previne que caso um atacante descubra a chave, este possa utilizar a mesma no futuro.}
 
 \section*{Exercício 20}
 \paragraph{Explique detalhadamente como funciona o esquema de troca de chaves proposto por Diffie e Helmann em 1976.}
-\section*{R:}
+\subsection*{R:}
 \subparagraph{Diffie-Hellman propõe o uso de um algoritmo baseado no calculo do logaritmo discreto com base em dois valores públicos $\alpha$ e $p$ para que duas partes negociem uma chave secreta temporária para uma comunicação posterior. Em uma possível negociação entre as partes A e B o algorítimo tem os seguintes passos:}
 \begin{enumerate}
 \item Existe inicialmente dois números conhecidos publicamente $\alpha$ e $p$. Onde $\alpha < p$ e $\alpha$ é a raiz primitiva no numero primo $p$.
@@ -100,5 +142,6 @@ K & = (Y_B)^{X_A} \bmod p \\
 
 
 \section*{Exercício 22}
-\paragraph{Sabe-se que é possível criar métodos de criptografia baseados na família de funções matemáticas conhecida como Curvas Elípticas (CE). Mostre os procedimentos para cifrar e decifrar por este algoritmo supondo que fossem usados os pontos da curva y2 = x3 + x + 1 mod 23 (curva sobre corpo finito primo). Desenvolva um exemplo, mostrando a cifragem e a decifragem da dezena final de seu RA. (Dica: use o algoritmo proposto por Menezes-Vanstone que admite que a mensagem M seja um ponto não pertencente à curva, isto é, ela pode ser formada por um par arbitrário de inteiros.)}
+\paragraph{Sabe-se que é possível criar métodos de criptografia baseados na família de funções matemáticas conhecida como Curvas Elípticas (CE). Mostre os procedimentos para cifrar e decifrar por este algoritmo supondo que fossem usados os pontos da curva $y^2 = x^3 + x + 1 \pmod {23} $ (curva sobre corpo finito primo). Desenvolva um exemplo, mostrando a cifragem e a decifragem da dezena final de seu RA. (Dica: use o algoritmo proposto por Menezes-Vanstone que admite que a mensagem M seja um ponto não pertencente à curva, isto é, ela pode ser formada por um par arbitrário de inteiros.)}
+\subsection*{R:}
 \end{document}
