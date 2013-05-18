@@ -8,7 +8,7 @@
 \usepackage{makeidx}
 \usepackage{graphicx}
 \usepackage{enumerate}
-\author{Welson Jr}
+\author{Welson Jr \\ RA: 149802}
 \title{Lista de Exercícios II IA012}
 \begin{document}
 \maketitle
@@ -54,6 +54,16 @@
 \section*{Exercício 8}
 \paragraph{ Em assinaturas digitais intermediadas com criptografia assimétrica temos uma codificação tripla na primeira parte do protocolo. Como o mesmo pode ser modificado de modo a eliminar esta tripla codificação?}
 \subsection*{R:}
+\subparagraph{A assinatura digital por criptografia assimétrica normalmente utiliza uma mensagem no seguinte formato:}
+\begin{enumerate}
+\item $X \rightarrow A: ID_X || E_{pr_X}(ID_X||E_{pu_Y}(E_{pr_X}(M))) $
+\item $A \rightarrow Y: E_{pr_A}(ID_X||E_{pu_Y}(E_{pr_A}(M))||T)$
+\end{enumerate}
+\subparagraph{Uma vez que a mensagem esta segura em um bloco que só pode ser aberto por Y, X poderia evitar fazer a codificação do bloco todo ao enviar a requisição para a Autoridade, como a mensagem esta assinada com a chave privada de X, Y terá certeza de quem enviou a mensagem, para acrescentar um pouco mais de segurança X também poderia um carimbo de tempo ao bloco cifrado a fim de evitar um possivel ataque de repetição.}
+\begin{enumerate}
+\item $X \rightarrow A: ID_X||E_{pu_Y}(E_{pr_X}(M||T)) $
+\item $A \rightarrow Y: E_{pr_A}(ID_X||E_{pu_Y}(E_{pr_A}(M))||T)$
+\end{enumerate}
 
 \section*{Exercício 10}
 \paragraph{ Considere o seguinte esquema de assinatura digital intermediada baseada em chave pública.}
@@ -69,6 +79,8 @@
 \subparagraph{$Autoridade \rightarrow Beto:  EK_{prAut} [ ID_A || EK_{puB} \{ EK_{prA} ( M ) \} ]$}
 \paragraph{Descreva qual é o tipo de aliança (acordo) entre os envolvidos que poderia surgir a fim de fraudar o sistema. Dica: a fraude se basearia em uma situação tão pouco provável que dificilmente tal aliança teria sucesso.}
 \subsection*{R:}
+\subparagraph{A autoridade cria um par de chaves (pública e privada) falsas de Beto e divulga a chave pública.
+Ana encripta a mensagem com a chave falsa de Beto  e envia para a Autoridade que por sua vez decifra a mensagem com a chave publica de Ana.  Para ocultar a fraude, a Autoridade decifra a mensagem com a chave privada falsa de Beto, cifra-a utilizando a chave pública verdadeira de Beto e envia a mensagem para ele. Assumindo que a Autoridade não tenha falsificado as chaves (pública e privada) de Ana, ela apenas conseguira ler as mensagens mas não conseguira altera-las para enviar a Bob, pois ela não tem a chave privada de Ana.}
 
 \section*{Exercício 14}
 \paragraph{Assinatura Digital Intermediada: explique o que é, por que é necessária e dê um exemplo de utilização, mostrando as informações que são trocadas entre as partes.}
@@ -144,4 +156,36 @@ K & = (Y_B)^{X_A} \bmod p \\
 \section*{Exercício 22}
 \paragraph{Sabe-se que é possível criar métodos de criptografia baseados na família de funções matemáticas conhecida como Curvas Elípticas (CE). Mostre os procedimentos para cifrar e decifrar por este algoritmo supondo que fossem usados os pontos da curva $y^2 = x^3 + x + 1 \pmod {23} $ (curva sobre corpo finito primo). Desenvolva um exemplo, mostrando a cifragem e a decifragem da dezena final de seu RA. (Dica: use o algoritmo proposto por Menezes-Vanstone que admite que a mensagem M seja um ponto não pertencente à curva, isto é, ela pode ser formada por um par arbitrário de inteiros.)}
 \subsection*{R:}
+\subparagraph{Seja:}
+\begin{itemize}
+\item $y^2 = x^3 + x + 1 \pmod {23}$
+\item $Eq(a,b) = Eq_{(23)}(1,1) $
+\item $G(13,7)$ 
+\end{itemize}
+\subparagraph{Para cifrar:}
+\begin{itemize}
+\item $M_1 = 0$
+\item $M_2 = 2$
+\item $n_A = 6$
+\item $P_A = n_A \times G = 6 \times (13,7) = (13,16)$
+\item $k = 4$
+\item $kG = 4 \times (13,7) = (17,20)$
+\item $kPu = 4 \times (13,7) = (5,19) = (c_1,c_2) $
+\item $x_R = M_1 \times c_1 = (0 \times 5) = 0$
+\item $y_R = M_1 \times c_2 = (2 \times 19)(\bmod 23) = 15$
+\item $c = \{(17,20),(0,15)\}$
+\end{itemize}
+\subparagraph{Para decifrar:}
+\begin{itemize}
+\item $n_U = 3$
+\item $P_U = n_U \times G = 3 \times (13,7) = (17,3)$
+\item $c = \{(17,20),(0,15)\}$
+\item $n_u \times kG = 3 \times (17,20) = (5,19) = (c_1,c_2)$
+\item $M_1 = x_R \times (c_1)^{-1} = 0 \times (5)^{-1} = 0$
+\item $M_2 = x_R \times (c_2)^{-1} = 15 \times (19)^{-1} = 2$
+\item $M_1 = 0$
+\item $M_2 = 2$
+\end{itemize}
+
+
 \end{document}
